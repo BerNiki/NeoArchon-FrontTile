@@ -5,6 +5,7 @@ import {
   registerInput,
   registerLaber,
 } from "./register.module.scss";
+import { api } from "../../api/api";
 
 export const Register = () => {
   const [formData, setFormData] = useState<Record<string, string>>({
@@ -28,17 +29,11 @@ export const Register = () => {
     setSuccess(false);
 
     try {
-      const response = await fetch("http://localhost:3000/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await api.post("/auth/signup", formData);
 
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.message || "Registration failed");
+      if (response.status !== 201) {
+        setError(response.data);
+        throw new Error("Registration failed");
       }
 
       setSuccess(true);
