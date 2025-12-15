@@ -1,4 +1,4 @@
-export const NAVIGATION_LINKS = [
+export const NAVIGATION_LINKS: { title: string; route: string }[] = [
   {
     title: "home page",
     route: "/",
@@ -9,7 +9,7 @@ export const NAVIGATION_LINKS = [
   },
   {
     title: "browse games",
-    route: "/open-games",
+    route: "/gamelist",
   },
   {
     title: "register",
@@ -18,5 +18,9 @@ export const NAVIGATION_LINKS = [
   {
     title: "login",
     route: "/login",
+  },
+  {
+    title: "create game",
+    route: "/create-game",
   },
 ];

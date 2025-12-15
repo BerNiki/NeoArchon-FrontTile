@@ -1,0 +1,53 @@
+.DARK {
+  background-color: black;
+}
+
+.LIGHT {
+  background-color: white;
+}
+
+.L1 {
+  background-color: green;
+}
+
+.L2 {
+  background-color: cyan;
+}
+
+.D1 {
+  background-color: purple;
+}
+
+.D2 {
+  background-color: darkblue;
+}
+
+.possibleMove {
+  background-color: rgba(50, 50, 50, 0.9);
+  width: 110%;
+  height: 104%;
+}
+
+.enemyUnit {
+  background-image: url("../../assets/sword-png-from-pngfre-30.png");
+  background-size: 50px 50px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.point-of-power {
+  background-image: url("../../assets/point-of-power.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 75px 75px;
+}
+
+.unit-image {
+  margin-left: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.activeUnit {
+  border: 4px red solid;
+}

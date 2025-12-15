@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "https://localhost:3000",
+  baseURL: "https://localhost:3000/api",
   withCredentials: true,
 });
 
@@ -27,7 +27,7 @@ api.interceptors.response.use(
         return Promise.reject(refreshError);
       }
     }
-
-    return Promise.reject(error);
+    console.log(error);
+    return Promise.reject(error.response.data.message);
   }
 );

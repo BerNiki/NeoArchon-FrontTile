@@ -6,8 +6,11 @@ import {
   registerLaber,
 } from "./login.module.scss";
 import { api } from "../../api/api";
+import { useUserProfile } from "../../context/UserContext";
+import { UserProfileInterface } from "../../context/interface/UserProfileInterface";
 
 export const Login = () => {
+  const { setProfile } = useUserProfile();
   const [formData, setFormData] = useState<Record<string, string>>({
     email: "",
     password: "",
@@ -29,6 +32,10 @@ export const Login = () => {
 
     try {
       await api.post("/auth/signin", formData);
+      const user = await api.get("user");
+      console.log(user);
+      const { id, username, elo } = user.data;
+      setProfile({ id, username, elo });
       setSuccess(true);
     } catch (err: any) {
       setError(err.message);

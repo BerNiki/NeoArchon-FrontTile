@@ -4,6 +4,7 @@
     "build": "webpack --config webpack.config.js"
   },
   "dependencies": {
+    "@hello-pangea/dnd": "^18.0.1",
     "axios": "^1.12.2",
     "css-loader": "^7.1.2",
     "react": "^19.2.0",

@@ -13,7 +13,9 @@ export const Register = () => {
     username: "",
     password: "",
   });
-  const [error, setError] = useState("");
+  const [error, setError] = useState<Record<string, string>[] | undefined>(
+    undefined
+  );
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -24,7 +26,7 @@ export const Register = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
+    setError(undefined);
     setLoading(true);
     setSuccess(false);
 
@@ -35,10 +37,10 @@ export const Register = () => {
         setError(response.data);
         throw new Error("Registration failed");
       }
-
       setSuccess(true);
     } catch (err: any) {
-      setError(err.message);
+      setError(err);
+      console.log(err);
     } finally {
       setLoading(false);
     }
@@ -91,10 +93,18 @@ export const Register = () => {
             <p>Registration was successful, you can login.</p>
           </div>
         )}
-        {error && (
+        {Array.isArray(error) ? (
           <div>
-            <p>Registration failed! {error}</p>
+            <p style={{ fontSize: "18px", color: "red" }}>
+              Registration failed!
+            </p>
+
+            {error.map((error: Record<string, string>) => (
+              <p style={{ fontSize: "18px", color: "red" }}>{error.message}</p>
+            ))}
           </div>
+        ) : (
+          <p>{error}</p>
         )}
       </form>
     </div>
