@@ -11,6 +11,7 @@ import {
   SelectedCell,
 } from "./interfaces/gameInterfaces";
 import { markReachableTiles } from "./helpers/possibleDestinations";
+import { socket } from "../../socket/socket";
 
 export const Game = ({ gameId }: { gameId: string }) => {
   const emptyCellState: Cell = { a: null, b: null };
@@ -48,7 +49,6 @@ export const Game = ({ gameId }: { gameId: string }) => {
         selectedUnit.a !== null &&
         possibleMove?.some((move) => move.a === rowId && move.b === cellId)
       ) {
-        console.log(possibleMove, selectedUnit);
         setLastMoveData({
           from: { a: selectedUnit.a, b: selectedUnit.b },
           to: { a: rowId, b: cellId },
@@ -94,6 +94,10 @@ export const Game = ({ gameId }: { gameId: string }) => {
   useEffect(() => {
     if (game && lastMoveData.from.a !== null && lastMoveData.to.a !== null) {
       const endTurn = async () => {
+        socket.emit("move", {
+          gameId: gameId,
+          moveData: lastMoveData,
+        });
         const result = await postMove({
           gameId: game.id,
           moveData: lastMoveData,
@@ -128,7 +132,19 @@ export const Game = ({ gameId }: { gameId: string }) => {
       }
     };
 
+    socket.on("connect", () => {
+      console.log(`connected with id: ${socket.id}`);
+    });
+
+    socket.on("moveUpdate", (data) => {
+      console.log("this", data);
+    });
+
     initGame();
+
+    return () => {
+      socket.off("moveUpdate");
+    };
   }, [gameId]);
 
   useEffect(() => {

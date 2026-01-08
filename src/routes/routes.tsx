@@ -6,10 +6,11 @@ import { Register } from "../pages/register/Register";
 import { Profile } from "../pages/profile/profile";
 import { CreateGame } from "../pages/create-game/create-game";
 import { BrowseGames, Todo } from "../pages/browse-games/BrowseGames";
+import { Battle } from "../components/battle/battle";
 
 export const appRoutes = createRoutesFromElements(
   <Route element={<Layout />}>
-    <Route index element={<HomePage />} />
+    <Route index element={<Battle />} />
     <Route path="register" element={<Register />} />
     <Route path="login" element={<Login />} />
     <Route path="profile" element={<Profile />} />
