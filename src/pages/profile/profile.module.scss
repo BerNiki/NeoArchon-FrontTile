@@ -1,0 +1,46 @@
+.profileWrapper {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 1px 1px black;
+  gap: 5px;
+  width: 600px;
+  height: fit-content;
+  border-radius: 8px;
+  border: rgb(92, 137, 25) solid 2px;
+  background-color: bisque;
+}
+
+.profile {
+  text-shadow: 0px 0px;
+  color: black;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.profile > p {
+  color: black;
+  margin-bottom: -5px;
+}
+
+.profileLabel {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.profile > button {
+  margin-top: 55px;
+  background-color: burlywood;
+  border-radius: 5px;
+}
+
+.profilePic {
+  max-width: 200px;
+  border-radius: 20px;
+  border: rgb(92, 137, 25) solid 2px;
+}

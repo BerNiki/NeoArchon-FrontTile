@@ -1,0 +1,17 @@
+.footer {
+  background: #000000;
+  background: linear-gradient(
+    90deg,
+    rgba(217, 76, 76, 1) 0%,
+    rgba(105, 89, 50, 1) 50%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  position: absolute;
+  bottom: 0;
+  height: 3.7rem;
+  width: 100%;
+  border-top: 8px rgb(172, 172, 172) solid;
+  display: flex;
+  justify-content: space-between;
+  color: bisque;
+}
